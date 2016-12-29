@@ -864,65 +864,16 @@ Function97cc:
 	dec c
 	jr nz, .loop
 	ret
-	
-CheckPink:
-    push bc
-rept 11
-    inc bc
-endr
-    ld a, [bc]
-    cp (1 << PNK)
-    pop bc
-    ret
-	
-; check if bc == BattleMonDVs
-    push hl
-    ld hl, BattleMonDVs
-    ld a, h
-    cp b
-    jr nz, .bc_is_not_battlemondvs
-    ld a, l
-    cp c
-    jr nz, .bc_is_not_battlemondvs
-    ; over here you know that bc == BattleMonDVs
-    jr .bc_uses_battle_struct
 
-.bc_is_not_battlemondvs:
-; check if bc == EnemyMonDVs
-    ld hl, BattleMonDVs
-    ld a, h
-    cp b
-    jr nz, .bc_is_not_enemymondvs_either
-    ld a, l
-    cp c
-    jr nz, .bc_is_not_enemymondvs_either
-    ; over here you know that bc == EnemyMonDVs
-
-.bc_uses_battle_struct:
-    pop hl
-    ; add 8 to bc to get Status
-
-.bc_is_not_enemymondvs_either:
-    ; add 11 to bc to get Status
- 
 GetMonPalettePointer:
-    push af
-    call CheckPink ; return 0 in a if not pink, 1 if pink
-    jr z, .pink
-    pop af
-    ld l, a
-    ld h, $0
-    add hl, hl
-    add hl, hl
-    add hl, hl
-    ld bc, PokemonPalettes
-    add hl, bc
-    ret
- 
-.pink:
-    pop af ; so we don't just leave that register pair that we pushed hanging around
-    ld hl, PokemonPalettes
-    ret
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld bc, PokemonPalettes
+	add hl, bc
+	ret
 
 GetMonNormalOrShinyPalettePointer:
 	push bc
