@@ -88,7 +88,7 @@ FindNest: ; 2a01f
 	ld a, [hli]
 	ld c, a
 	inc hl
-	ld a, 3
+	ld a, 7
 	call .SearchMapForMon
 	jr nc, .next_water
 	ld [de], a
@@ -96,7 +96,7 @@ FindNest: ; 2a01f
 
 .next_water
 	pop hl
-	ld bc, 3 * 3
+	ld bc, 7 * 3
 	add hl, bc
 	jr .FindWater
 ; 2a088
@@ -368,9 +368,13 @@ ChooseWildEncounter: ; 2a14f
 ; 2a1d9
 
 .WaterMonTable: ; 2a1d9
-	db 60,  $0 ; 60% chance
-	db 90,  $2 ; 30% chance
-	db 100, $4 ; 10% chance
+	db 30,  $0 ; 30% chance
+	db 60,  $2 ; 30% chance
+	db 80,  $4 ; 20% chance
+	db 90,  $6 ; 10% chance
+	db 95,  $8 ;  5% chance
+	db 99,  $a ;  4% chance
+	db 100, $c ;  1% chance
 ; 2a1df
 
 CheckRepelEffect:: ; 2a1df

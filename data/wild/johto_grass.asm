@@ -1191,29 +1191,29 @@
 	map ROUTE_29
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 2, PIDGEY
-	db 2, SENTRET
-	db 3, PIDGEY
-	db 3, SENTRET
-	db 2, RATTATA
-	db 3, HOPPIP
-	db 3, HOPPIP
+	db 2, PARAS
+	db 2, CATERPIE
+	db 3, BELLSPROUT
+	db 3, CATERPIE
+	db 2, NIDORAN_F
+	db 3, NIDORAN_M
+	db 3, PARAS
 	; day
-	db 2, PIDGEY
-	db 2, SENTRET
-	db 3, PIDGEY
-	db 3, SENTRET
-	db 2, RATTATA
-	db 3, HOPPIP
-	db 3, HOPPIP
+	db 2, PARAS
+	db 2, CATERPIE
+	db 3, BELLSPROUT
+	db 3, CATERPIE
+	db 2, NIDORAN_F
+	db 3, NIDORAN_M
+	db 3, PARAS
 	; nite
-	db 2, HOOTHOOT
 	db 2, RATTATA
-	db 3, HOOTHOOT
+	db 2, ODDISH
 	db 3, RATTATA
-	db 2, RATTATA
-	db 3, HOOTHOOT
-	db 3, HOOTHOOT
+	db 3, ZUBAT
+	db 3, POLIWAG
+	db 3, ODDISH
+	db 3, POLIWAG
 
 	map ROUTE_30
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite

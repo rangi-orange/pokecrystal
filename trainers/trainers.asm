@@ -8800,28 +8800,16 @@ MysticalmanGroup:
 ; ================
 
 	; MYSTICALMAN (1)
-	db "EUSINE@"
+	db "TRACEY@"
 	db 1 ; moves
 
 	; party
 
-	db 23, DROWZEE
-		db DREAM_EATER
-		db HYPNOSIS
+	db 13, VENONAT
+		db TACKLE
 		db DISABLE
-		db CONFUSION
-
-	db 23, HAUNTER
-		db LICK
-		db HYPNOSIS
-		db MEAN_LOOK
-		db CURSE
-
-	db 25, ELECTRODE
-		db SCREECH
-		db SONICBOOM
-		db THUNDER
-		db ROLLOUT
+		db 0
+		db 0
 
 	db $ff ; end
 

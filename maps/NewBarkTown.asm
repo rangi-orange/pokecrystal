@@ -109,6 +109,15 @@ NewBarkTownTeacherScript:
 
 NewBarkTownFisherScript:
 	jumptextfaceplayer Text_ElmDiscoveredNewMon
+;	setflag ENGINE_ZEPHYRBADGE
+;	pause 5
+;	setflag ENGINE_HIVEBADGE
+;	pause 5
+;	setflag ENGINE_PLAINBADGE
+;	pause 5
+;	setflag ENGINE_FOGBADGE
+;	checkcode VAR_BADGES
+	end
 
 NewBarkTownSilverScript:
 	opentext
@@ -201,7 +210,7 @@ Text_GearIsImpressive:
 	done
 
 Text_WaitPlayer:
-	text "Wait, <PLAY_G>!"
+	text "Yo, <PLAY_G>!"
 	done
 
 Text_WhatDoYouThinkYoureDoing:
@@ -214,16 +223,16 @@ Text_ItsDangerousToGoAlone:
 	line "go out without a"
 	cont "#MON!"
 
-	para "Wild #MON"
-	line "jump out of the"
+	para "Isn't professor"
+	line "Ivy giving you"
 
-	para "grass on the way"
-	line "to the next town."
+	para "a #MON? The LAB's"
+	line "on BAYVIEW ROAD."
 	done
 
 Text_YourMonIsAdorable:
-	text "Oh! Your #MON"
-	line "is adorable!"
+	text "Oh! Nice #MON!"
+	line "It looks cool,"
 	cont "I wish I had one!"
 	done
 
@@ -245,11 +254,11 @@ Text_CallMomOnGear:
 	done
 
 Text_ElmDiscoveredNewMon:
-	text "Yo, <PLAYER>!"
+	text "<PLAYER>!"
 
-	para "I hear PROF.ELM"
-	line "discovered some"
-	cont "new #MON."
+	para "PROFESSOR IVY is"
+	line "smokin', don't"
+	cont "you think?"
 	done
 
 NewBarkTownRivalText1:
@@ -266,11 +275,11 @@ NewBarkTownRivalText2:
 	done
 
 NewBarkTownSignText:
-	text "NEW BARK TOWN"
+	text "VALENCIA ISLAND"
 
-	para "The Town Where the"
-	line "Winds of a New"
-	cont "Beginning Blow"
+	para "IVY RESEARCH"
+	line "South side of"
+	cont "village."
 	done
 
 PlayersHouseSignText:
@@ -278,38 +287,34 @@ PlayersHouseSignText:
 	done
 
 ElmsLabSignText:
-	text "ELM #MON LAB"
+	text "IVY RESEARCH"
+	line "No.2 BAYVIEW"
 	done
 
 ElmsHouseSignText:
 	text "ELM'S HOUSE"
 	done
 
-NewBarkTown_MapEventHeader:
-	; filler
-	db 0, 0
+NewBarkTown_MapEventHeader:: db 0, 0
 
-.Warps:
-	db 4
-	warp_def $3, $6, 1, ELMS_LAB
-	warp_def $5, $d, 1, KRISS_HOUSE_1F
-	warp_def $b, $3, 1, KRISS_NEIGHBORS_HOUSE
-	warp_def $d, $b, 1, ELMS_HOUSE
+.Warps: db 4
+	warp_def 19, 18, 1, ELMS_LAB
+	warp_def 5, 13, 1, KRISS_HOUSE_1F
+	warp_def 11, 3, 1, KRISS_NEIGHBORS_HOUSE
+	warp_def 19, 5, 1, ELMS_HOUSE
 
-.XYTriggers:
-	db 2
-	xy_trigger 0, $8, $1, $0, NewBarkTown_TeacherStopsYouTrigger1, $0, $0
-	xy_trigger 0, $9, $1, $0, NewBarkTown_TeacherStopsYouTrigger2, $0, $0
+.CoordEvents: db 2
+	xy_trigger 0, 8, 1, 0, NewBarkTown_TeacherStopsYouTrigger1, 0, 0
+	xy_trigger 0, 9, 1, 0, NewBarkTown_TeacherStopsYouTrigger2, 0, 0
 
-.Signposts:
-	db 4
-	signpost 8, 8, SIGNPOST_READ, NewBarkTownSign
+.BGEvents: db 4
+	signpost 12, 8, SIGNPOST_READ, NewBarkTownSign
 	signpost 5, 11, SIGNPOST_READ, MapNewBarkTownSignpost1Script
-	signpost 3, 3, SIGNPOST_READ, MapNewBarkTownSignpost2Script
-	signpost 13, 9, SIGNPOST_READ, MapNewBarkTownSignpost3Script
+	signpost 19, 15, SIGNPOST_READ, MapNewBarkTownSignpost2Script
+	signpost 3, 13, SIGNPOST_READ, MapNewBarkTownSignpost3Script
 
-.PersonEvents:
-	db 3
-	person_event SPRITE_TEACHER, 8, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
-	person_event SPRITE_FISHER, 9, 12, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, NewBarkTownFisherScript, -1
-	person_event SPRITE_SILVER, 2, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
+.ObjectEvents: db 3
+	person_event SPRITE_COOLTRAINER_M, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
+	person_event SPRITE_YOUNGSTER, 18, 10, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, NewBarkTownFisherScript, -1
+	person_event SPRITE_SILVER, 0, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
+

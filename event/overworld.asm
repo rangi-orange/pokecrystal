@@ -399,9 +399,9 @@ SurfFunction: ; c909
 	dw .AlreadySurfing
 
 .TrySurf: ; c922 (3:4922)
-	ld de, ENGINE_FOGBADGE
-	call CheckBadge
-	jr c, .asm_c956
+;	ld de, ENGINE_FOGBADGE
+;	call CheckBadge
+;	jr c, .asm_c956
 	ld hl, BikeFlags
 	bit 1, [hl] ; always on bike
 	jr nz, .cannotsurf

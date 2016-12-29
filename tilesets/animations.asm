@@ -81,8 +81,8 @@ Tileset31Anim: ; 0xfc073
 ; 0xfc0a3
 
 Tileset01Anim: ; 0xfc0a3
-	dw VTiles2 tile $14, AnimateWaterTile
-	dw NULL,  WaitTileAnimation
+	dw RSEWaterFrames1, AnimateRSEWaterTile
+    dw RSEWaterFrames2, AnimateRSEWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  TileAnimationPalette
 	dw NULL,  WaitTileAnimation
@@ -301,6 +301,7 @@ WaitTileAnimation: ; fc2fe
 	ret
 ; fc2ff
 
+
 StandingTileFrame8: ; fc2ff
 	ld a, [TileAnimationTimer]
 	inc a
@@ -495,6 +496,57 @@ WaterTileFrames: ; fc41c
 	INCBIN "gfx/tilesets/water.2bpp"
 ; fc45c
 
+AnimateRSEWaterTile:
+; Draw a RSE water tile for the current frame in VRAM tile at de.
+; based on AnimateWhirlpoolTile, but with 8 frames
+
+; Struct:
+;     VRAM address
+;    Address of the first tile
+
+; Only does one of 2 tiles at a time.
+
+; Save sp in bc (see WriteTile).
+    ld hl, [sp+0]
+    ld b, h
+    ld c, l
+
+; de = VRAM address
+    ld l, e
+    ld h, d
+    ld e, [hl]
+    inc hl
+    ld d, [hl]
+    inc hl
+; Tile address is now at hl.
+
+; Get the tile for this frame.
+    ld a, [TileAnimationTimer]
+    and %111 ; 8 frames x2
+    swap a  ; * 16 bytes per tile
+
+    add [hl]
+    inc hl
+    ld h, [hl]
+    ld l, a
+    ld a, 0
+    adc h
+    ld h, a
+
+; Stack now points to the desired frame.
+    ld sp, hl
+
+    ld l, e
+    ld h, d
+
+    jp WriteTile
+	
+RSEWaterFrames1: dw VTiles2 tile $14, RSEWaterTiles1
+RSEWaterFrames2: dw VTiles2 tile $59, RSEWaterTiles2
+
+; each file is just the 8 frames in a row
+RSEWaterTiles1: INCBIN "gfx/tilesets/rse_water_1.2bpp"
+RSEWaterTiles2: INCBIN "gfx/tilesets/rse_water_2.2bpp"
 
 ForestTreeLeftAnimation: ; fc45c
 	ld hl, [sp+0]

@@ -1178,9 +1178,9 @@ _OakText1::
 	para "Welcome to the"
 	line "world of #MON!"
 
-	para "My name is OAK."
+	para "My name is IVY."
 
-	para "People call me the"
+	para "I am known as a"
 	line "#MON PROF."
 	prompt
 

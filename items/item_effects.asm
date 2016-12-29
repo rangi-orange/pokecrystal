@@ -38,7 +38,7 @@ ItemEffects: ; e73c
 	dw FireStone
 	dw Thunderstone
 	dw WaterStone
-	dw Item19
+	dw PinkanBerry
 	dw HPUp
 	dw Protein
 	dw Iron
@@ -2826,8 +2826,48 @@ OpenBox: ; f769
 	db "@"
 ; 0xf77d
 
-Brightpowder:
-Item19:
+PinkanBerry:
+    ; Choose a Pokémon to use it on
+    ld b, PARTYMENUACTION_HEALING_ITEM
+    call UseItem_SelectMon
+    ; Exit early if the player canceled
+    jp c, PinkanBerry_ExitMenu
+
+    ; Get the chosen Pokémon's current status
+    ld a, MON_STATUS
+    call GetPartyParamLocation
+    ; If it's already pink, no effect
+    ld a, [hl]
+    and (1 << PNK)
+    jp nz, NoEffectMessage
+
+    ; Make it pink
+    ld a, (1 << PNK)
+    ld [hl], a
+    ; Play a sound effect
+    call Play_SFX_FULL_HEAL
+
+    ; Describe the effect
+    ; TODO:
+    ; • add PARTYMENUTEXT_MAKE_PINK after the other PARTYMENUTEXT consts in constants/item_constants.asm
+    ; • add your text to .MenuActionTexts in engine.party_menu.asm
+    ld a, PARTYMENUTEXT_MAKE_PINK
+    ld [PartyMenuActionText], a
+    call ItemActionTextWaitButton
+    ; Use up the Pinkan Berry
+    call UseDisposableItem
+    call ClearPalettes
+    ret
+
+PinkanBerry_ExitMenu:
+    ; wItemEffectSucceeded of 0 means it was canceled
+    ; it's set to 1 by default before calling PinkanBerry
+    xor a
+    ld [wItemEffectSucceeded], a
+    call ClearPalettes
+    ret
+
+Brightpowder:	
 LuckyPunch:
 MetalPowder:
 Nugget:

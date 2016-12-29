@@ -1,11 +1,11 @@
 	db EXEGGUTOR ; 103
 
-	db  95,  95,  85,  55, 125,  65
-	;   hp  atk  def  spd  sat  sdf
+	db  95,  105,  85,  45,  125,  75
+	;   hp   atk   def  spd  sat   sdf
 
-	db GRASS, PSYCHIC
+	db GRASS, DRAGON
 	db 45 ; catch rate
-	db 212 ; base exp
+	db 186 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 127 ; gender

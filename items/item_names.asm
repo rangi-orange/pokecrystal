@@ -22,7 +22,7 @@
 	db "FIRE STONE@"
 	db "THUNDERSTONE@"
 	db "WATER STONE@"
-	db "TERU-SAMA@"
+	db "PINKAN BERRY@"
 	db "HP UP@"
 	db "PROTEIN@"
 	db "IRON@"

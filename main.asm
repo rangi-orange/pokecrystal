@@ -4173,6 +4173,9 @@ CopyStatusString: ; 50d25
 PlaceNonFaintStatus: ; 50d2e
 	push de
 	ld a, [de]
+	ld de, PnkString
+	bit PNK, a
+	jr nz, .place
 	ld de, PsnString
 	bit PSN, a
 	jr nz, .place
@@ -4203,6 +4206,7 @@ PsnString: db "PSN@"
 BrnString: db "BRN@"
 FrzString: db "FRZ@"
 ParString: db "PAR@"
+PnkString: db "PNK@"
 
 ListMoves: ; 50d6f
 ; List moves at hl, spaced every [Buffer1] tiles.

@@ -1396,8 +1396,10 @@ ExeggutorEvosAttacks:
 	db 1, BARRAGE
 	db 1, HYPNOSIS
 	db 1, CONFUSION
-	db 19, STOMP
+	db 17, PSYWAVE
+	db 29, DRAGON_RAGE
 	db 31, EGG_BOMB
+	db 47, OUTRAGE
 	db 0 ; no more level-up moves
 
 CuboneEvosAttacks:
@@ -2113,7 +2115,8 @@ CyndaquilEvosAttacks:
 	db EVOLVE_LEVEL, 14, QUILAVA
 	db 0 ; no more evolutions
 	db 1, TACKLE
-	db 1, LEER
+	db 1, HEADBUTT
+	db 1, SURF
 	db 6, SMOKESCREEN
 	db 12, EMBER
 	db 19, QUICK_ATTACK

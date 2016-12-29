@@ -175,10 +175,14 @@
 	db 5, MAGIKARP
 
 	map NEW_BARK_TOWN
-	db 6 percent ; encounter rate
-	db 20, TENTACOOL
-	db 15, TENTACOOL
-	db 20, TENTACRUEL
+	db 6 percent
+	db 2, PIDGEY
+	db 2, SENTRET
+	db 3, PIDGEY
+	db 3, SENTRET
+	db 2, RATTATA
+	db 3, HOPPIP
+	db 3, HOPPIP
 
 	map CHERRYGROVE_CITY
 	db 6 percent ; encounter rate

@@ -1,11 +1,11 @@
 	db DUGTRIO ; 051
 
-	db  35,  80,  50, 120,  50,  70
-	;   hp  atk  def  spd  sat  sdf
+	db  35,  100,  60, 110,  50,  70
+	;   hp   atk   def spd   sat  sdf
 
-	db GROUND, GROUND
+	db GROUND, STEEL
 	db 50 ; catch rate
-	db 153 ; base exp
+	db 149 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 127 ; gender

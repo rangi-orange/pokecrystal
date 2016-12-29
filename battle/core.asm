@@ -4620,6 +4620,7 @@ UseHeldStatusHealingItem: ; 3dde9
 ; 3de44
 
 .Statuses: ; 3de44
+	db HELD_HEAL_PINK, 1 << PNK
 	db HELD_HEAL_POISON, 1 << PSN
 	db HELD_HEAL_FREEZE, 1 << FRZ
 	db HELD_HEAL_BURN, 1 << BRN
@@ -4676,21 +4677,21 @@ HandleStatBoostingHeldItems: ; 3de97
 	ld a, [hLinkPlayerNumber]
 	cp $1
 	jr z, .player_1
-	call .DoPlayer
-	jp .DoEnemy
-
-.player_1
 	call .DoEnemy
 	jp .DoPlayer
+
+.player_1
+	call .DoPlayer
+	jp .DoEnemy
 ; 3dea9
 
-.DoPlayer: ; 3dea9
+.DoEnemy: ; 3dea9
 	call GetPartymonItem
 	ld a, $0
 	jp .HandleItem
 ; 3deb1
 
-.DoEnemy: ; 3deb1
+.DoPlayer: ; 3deb1
 	call GetOTPartymonItem
 	ld a, $1
 .HandleItem: ; 3deb6
@@ -6494,7 +6495,7 @@ LoadEnemyMon: ; 3e8eb
 .TreeMon:
 ; If we're headbutting trees, some monsters enter battle asleep
 	call CheckSleepingTreeMon
-	ld a, SLP ; Asleep for 7 turns
+	ld a, (1 << PNK) ; Asleep for 7 turns
 	jr c, .UpdateStatus
 ; Otherwise, no status
 	xor a

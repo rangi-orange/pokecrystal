@@ -103,6 +103,12 @@ UnknownText_0x1bc16e::
 	line "to its senses."
 	done
 
+MakePinkText::
+	text_from_ram StringBuffer1
+	text " has"
+	line "turned pink!"
+	done
+
 UnknownText_0x1bc187::
 	text "Please enter any"
 	line "four-digit number."

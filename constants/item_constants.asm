@@ -24,7 +24,7 @@
 	const FIRE_STONE   ; $16
 	const THUNDERSTONE ; $17
 	const WATER_STONE  ; $18
-	const ITEM_19      ; $19
+	const PINKAN_BERRY     ; $19
 	const HP_UP        ; $1A
 	const PROTEIN      ; $1B
 	const IRON         ; $1C
@@ -293,6 +293,7 @@ CANT_TOSS   EQU 1 << 7
 	const HELD_CLEANSE_TAG
 
 const_value SET 10
+	const HELD_HEAL_PINK
 	const HELD_HEAL_POISON
 	const HELD_HEAL_FREEZE
 	const HELD_HEAL_BURN
@@ -438,3 +439,4 @@ const_value set $f0
 	const PARTYMENUTEXT_REVIVE
 	const PARTYMENUTEXT_LEVEL_UP
 	const PARTYMENUTEXT_HEAL_CONFUSION
+	const PARTYMENUTEXT_MAKE_PINK

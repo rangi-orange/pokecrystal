@@ -3,9 +3,9 @@
 	db  30,  56,  35,  72,  25,  35
 	;   hp  atk  def  spd  sat  sdf
 
-	db NORMAL, NORMAL
+	db DARK, NORMAL
 	db 255 ; catch rate
-	db 57 ; base exp
+	db 51 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 127 ; gender

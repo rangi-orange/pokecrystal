@@ -64,4 +64,4 @@
 	db "LEADER@"
 	db "OFFICER@"
 	db "ROCKET@"
-	db "MYSTICALMAN@"
+	db "<PKMN> WATCHER@"

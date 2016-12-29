@@ -56,7 +56,7 @@ ItemDescriptions:
 	dw FireStoneDesc
 	dw ThunderStoneDesc
 	dw WaterStoneDesc
-	dw TeruSama2Desc
+	dw PinkanBerryDesc
 	dw HPUpDesc
 	dw ProteinDesc
 	dw IronDesc
@@ -383,8 +383,9 @@ WaterStoneDesc:
 	db   "Evolves certain"
 	next "kinds of #MON.@"
 
-TeruSama2Desc:
-	db   "?@"
+PinkanBerryDesc:
+	db   "It turns the user"
+	next "pink!@"
 
 HPUpDesc:
 	db   "Raises the HP of"
